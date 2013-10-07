@@ -99,3 +99,11 @@ select c.name, sum(coalesce(o.dollars,0))
 from customers c full outer join orders o
 		on (c.cid = o.cid)
 group by c.name, c.cid;
+
+-- 15 --
+select c.name, p.name, a.name
+from customers c, products p, agents a, orders o
+where c.cid = o.cid
+  and o.pid = p.pid
+  and o.aid = a.aid
+  and a.city = 'New York';
