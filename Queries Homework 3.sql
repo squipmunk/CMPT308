@@ -66,11 +66,19 @@ where c.city in (
 	select p.city
 	from products p
 	group by p.city
-	order by count(*) desc
+	order by count(*) asc
 	limit 1);
 
 -- 10 --
 
+select c.name, c.city
+from customers c
+where c.city in (
+	select p.city
+	from products p
+	group by city
+	order by count(city) desc
+	limit 1);
 
 -- 11 --
 
