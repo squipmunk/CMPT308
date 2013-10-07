@@ -47,7 +47,7 @@ from customers c full outer join orders o
 where o.cid is null;
 
 -- 7 --
-select c.name, a.name
+select distinct c.name, a.name
 from customers c full outer join orders o
 		on (c.cid = o.cid)
 	full outer join agents a
