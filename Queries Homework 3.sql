@@ -93,3 +93,9 @@ select c.name, o.pid, o.dollars
 from customers c full outer join orders o
 		on (c.cid = o.cid)
 order by coalesce(o.dollars, 0) desc;
+
+-- 14 --
+select c.name, sum(coalesce(o.dollars,0))
+from customers c full outer join orders o
+		on (c.cid = o.cid)
+group by c.name, c.cid;
