@@ -107,3 +107,15 @@ where c.cid = o.cid
   and o.pid = p.pid
   and o.aid = a.aid
   and a.city = 'New York';
+
+-- 16 --
+select  o.ordno as OrderNumber, ((o.qty*p.priceUSD)-(o.qty*priceUSD*c.discount/100)) as Quoted,
+	o.dollars as Paid
+from customers c, orders o, products p
+where c.cid = o.cid
+  and p.pid = o.pid
+  
+-- 17 --
+update orders
+set dollars = 400
+where ordno = 1011
