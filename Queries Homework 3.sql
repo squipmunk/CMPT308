@@ -53,3 +53,35 @@ from customers c full outer join orders o
 	full outer join agents a
 		on (o.aid = a.aid)
 where c.city = a.city;
+
+-- 8 --
+select c.name, a.name
+from customers c, agents a
+where c.city = a.city
+
+-- 9 --
+select c.name, c.city
+from customers c
+where c.city in (
+	select p.city
+	from products p
+	group by p.city
+	order by count(*) desc
+	limit 1);
+
+-- 10 --
+
+
+-- 11 --
+
+
+-- 12 --
+select p.name
+from products p
+where p.priceUSD>(select avg(priceUSD) from products);
+
+-- 13 --
+select c.name, o.pid, o.dollars
+from customers c full outer join orders o
+		on (c.cid = o.cid)
+order by coalesce(o.dollars, 0) desc;
